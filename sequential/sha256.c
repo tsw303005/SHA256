@@ -78,12 +78,12 @@ void sha256_transform(SHA256_CTX *ctx, const BYTE *data) {
 	ctx->result[7] += h;
 }
 
-void sha256_update(SHA256_CTX *ctx, const BYTE *data, size_t len) {
+void sha256_update(SHA256_CTX *ctx, const BYTE **data, size_t len) {
     unsigned long long i;
 
     for (i = 0; i < len; i++) {
         // update the next 512 bits data
-        ctx->data[ctx->datalen++] = data[i];
+        ctx->data[ctx->datalen++] = (*data)[i];
 
         // update ctx result every 512 bits / 64 bytes
         if (ctx->datalen == 64) {
@@ -135,10 +135,10 @@ void sha256_final(SHA256_CTX *ctx, BYTE *hash_result) {
 }
 
 void sha256_show_result(BYTE *hash_result) {
+	printf("[Info]: The result of encrypt \"");
     for (int i = 0; i < 32; i++) {
         printf("%x", hash_result[i] / 16);
         printf("%x", hash_result[i] % 16);
     }
-    printf("\n");
-	//return result;
+    printf("\"\n\n");
 }
