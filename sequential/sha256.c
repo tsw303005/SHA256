@@ -94,6 +94,7 @@ void sha256_update(SHA256_CTX *ctx, const BYTE **data, size_t len) {
     }
 
     // check the left message of the data for padding
+	i = ctx->datalen;
 	if (ctx->datalen < 56) {
 		ctx->data[i++] = 0x80;
 		while (i < 56) 

@@ -60,16 +60,16 @@ void char_to_hex(BYTE **answer) {
 	*answer = result;
 }
 
-void sha256_test(const BYTE *input, const BYTE *output) {
+void sha256_test(const BYTE *input) {
 	BYTE *text = NULL;
 	BYTE *answer = NULL;
 
 	// read the testcase
 	read_test_case(&text, input);
-	read_test_case(&answer, output);
+	//read_test_case(&answer, output);
 
 	// convert char to hex for comparing
-	char_to_hex(&answer);
+	//char_to_hex(&answer);
 
 	// result buffer
 	BYTE buf[32];
@@ -84,18 +84,18 @@ void sha256_test(const BYTE *input, const BYTE *output) {
  	sha256_final(&ctx, buf);
 	
 	// check the correctness
-	pass = pass && !memcmp(answer, buf, 32);
-	printf("[Info]: SHA-256 tests ------------- %s\n\n", pass ? "SUCCESS" : "FAIL");
+	//pass = pass && !memcmp(answer, buf, 32);
+	//printf("[Info]: SHA-256 tests ------------- %s\n\n", pass ? "SUCCESS" : "FAIL");
 
 	// show transformed sha256 value
 	sha256_show_result(buf);
 
 	terminal(&text);
-	terminal(&answer);
+	//terminal(&answer);
 }
 
 int main(int argc, char **argv)
 {
-	sha256_test(argv[1], argv[2]);
+	sha256_test(argv[1]);
 	return(0);
 }
