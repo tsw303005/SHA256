@@ -136,8 +136,9 @@ void sha256_final(SHA256_CTX *ctx, BYTE *hash_result) {
 
 void sha256_show_result(BYTE *hash_result) {
     for (int i = 0; i < 32; i++) {
-        printf("%x", hash_result[i]/16);
-        printf("%x", hash_result[i]%16);
+        printf("%x", hash_result[i] / 16);
+        printf("%x", hash_result[i] % 16);
     }
     printf("\n");
+	//return result;
 }
