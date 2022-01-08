@@ -1,5 +1,5 @@
 # SHA256
-- Implement SHA256 with C++
+- Implement SHA256 with C
 - Different testcase to test encrypt speed
 
 # Acknowledgments
